@@ -45,5 +45,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+
+    -- キーマップ
+    local map = function(keys, func, desc)
+      vim.keymap.set('n', keys, func, { buffer = args.buf, noremap = true, silent = true, desc = desc })
+    end
+    -- よく使うLSPのキーマップ
+    map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
+    map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    map('K', vim.lsp.buf.hover, 'Hover Documentation')
   end,
 })
