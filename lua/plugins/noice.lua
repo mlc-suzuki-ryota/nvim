@@ -21,6 +21,13 @@ return {
         },
         view = "mini",
       },
+      {
+        filter = {
+          event = "lsp",
+          kind = "signature",
+        },
+        opts = { skip = true },
+      },
     },
     presets = {
       bottom_search = true,
