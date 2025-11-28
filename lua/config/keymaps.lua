@@ -30,8 +30,7 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 -- SelectAll
 keymap.set("n", "all", "gg<S-v>G")
 
--- Terminal
-keymap.set("n", "<Leader>ft", "<Cmd>FloatermNew<CR>", { silent = true })
+
 
 -- Buf移動
 keymap.set("n", "<tab>", "<Cmd>bnext<CR>", { silent = true })

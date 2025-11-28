@@ -31,7 +31,7 @@ vim.opt.splitkeep = "cursor"
 vim.opt.mouse = 'a'
 -- 不可視文字可視化
 vim.opt.list = true
-vim.o.completeopt = "menu,menuone,noselect" -- Stop auto-selection in completion menus
+vim.opt.completeopt = "menu,menuone,noselect" -- Stop auto-selection in completion menus
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
@@ -43,16 +43,11 @@ vim.opt.formatoptions:append({ "r" })
 vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
 vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
--- vim.cmd("hi Normal guibg=NONE")
--- vim.cmd("hi NonText guibg=NONE")
-
-vim.api.nvim_win_set_option(0, 'signcolumn', 'yes:1')
-vim.api.nvim_set_option('termguicolors', true)
-vim.api.nvim_set_option('scrolloff', 4)
-vim.api.nvim_set_option('ignorecase', true)
-vim.api.nvim_set_option('smartcase', true)
-vim.api.nvim_set_option('clipboard', 'unnamedplus')
-vim.api.nvim_win_set_option(0, 'number', true)
-vim.api.nvim_win_set_option(0, 'wrap', false)
+-- Display options
+vim.opt.signcolumn = 'yes:1'
+vim.opt.number = true
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 4
+vim.opt.clipboard = 'unnamedplus'
 -- vim.api.nvim_win_set_option(0, 'winblend', 80)
 -- vim.api.nvim_win_set_option(0, 'pumblend', 80)
