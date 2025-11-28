@@ -1,7 +1,5 @@
--- (同じ) パッケージマネージャー(mason)をセットアップする
 require 'mason'.setup()
 
--- (同じ) masonを介してlanguage serverを自動インストールする
 local ensure_installed = {
   'lua_ls',
   'vtsls'
@@ -12,7 +10,6 @@ require 'mason-lspconfig'.setup {
   dependencies = { 'saghen/blink.cmp' },
 }
 
--- (NEW) language serverの設定をする
 vim.lsp.config('lua_ls', {
   -- nvim-lspconfig が設定したコンフィグにsettingsを追加する
   settings = {
