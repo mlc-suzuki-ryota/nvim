@@ -16,8 +16,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
   desc = "ディレクトリを開いた時にYaziを起動する",
 })
-
--- ダークモードの時のみtokyonightを適用
-if vim.o.background == "dark" then
-  vim.cmd.colorscheme "tokyonight-night"
-end
