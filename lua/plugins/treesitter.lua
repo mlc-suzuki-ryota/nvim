@@ -9,17 +9,6 @@ return {
   lazy = false,
   build = ":TSUpdate",
   config = function()
-    require 'nvim-treesitter.configs'.setup {
-      ensure_installed = { "lua", "vim", "query", "markdown", php, html, css, tsx, json },
-      highlight = {
-        enable = true,
-        disable = {},
-      },
-      indent = {
-        enable = true,
-        disable = {},
-      }
-    }
     require 'treesitter-context'.setup {
       enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
       multiwindow = false,      -- Enable multiwindow support.
@@ -35,7 +24,17 @@ return {
       zindex = 20,     -- The Z-index of the context window
       on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
     }
+
     require 'nvim-treesitter.configs'.setup {
+      ensure_installed = { "lua", "vim", "query", "markdown", php, html, css, tsx, json },
+      highlight = {
+        enable = true,
+        disable = {},
+      },
+      indent = {
+        enable = true,
+        disable = {},
+      },
       pairs = {
         enable = true,
         disable = {},

@@ -1,0 +1,193 @@
+{
+  "wr-if": {
+    "prefix": "wr-if",
+    "body": [
+      "<wr-if condition=\"$1\">",
+      "\t<wr-then>",
+      "\t\t$2",
+      "\t</wr-then>",
+      "\t<wr-else>",
+      "\t\t$3",
+      "\t</wr-else>",
+      "</wr-if>"
+    ],
+    "description": "WebRelease if-then-else",
+    "scope": "text.html"
+  },
+  "wr-ifc": {
+    "prefix": "wr-ifc",
+    "body": [
+      "<wr-if condition=\"$1\">",
+      "\t$2",
+      "</wr-if>"
+    ],
+    "description": "WebRelease if statement",
+    "scope": "text.html"
+  },
+  "wr-switch": {
+    "prefix": "wr-switch",
+    "body": [
+      "<wr-switch value=\"$1\">",
+      "\t<wr-case value=\"$2\">",
+      "\t\t$3",
+      "\t</wr-case>",
+      "\t<wr-default>",
+      "\t\t$4",
+      "\t</wr-default>",
+      "</wr-switch>"
+    ],
+    "description": "WebRelease switch statement",
+    "scope": "text.html"
+  },
+  "wr-case": {
+    "prefix": "wr-case",
+    "body": [
+      "<wr-case value=\"$1\">",
+      "\t$2",
+      "</wr-case>"
+    ],
+    "description": "WebRelease case",
+    "scope": "text.html"
+  },
+  "wr-conditional": {
+    "prefix": "wr-conditional",
+    "body": [
+      "<wr-conditional>",
+      "\t<wr-cond condition=\"$1\">",
+      "\t\t$2",
+      "\t</wr-cond>",
+      "\t<wr-cond condition=\"true\">",
+      "\t\t$3",
+      "\t</wr-cond>",
+      "</wr-conditional>"
+    ],
+    "description": "WebRelease conditional",
+    "scope": "text.html"
+  },
+  "wr-cond": {
+    "prefix": "wr-cond",
+    "body": [
+      "<wr-cond condition=\"$1\">",
+      "\t$2",
+      "</wr-cond>"
+    ],
+    "description": "WebRelease condition",
+    "scope": "text.html"
+  },
+  "wr-for": {
+    "prefix": "wr-for",
+    "body": [
+      "<wr-for list=\"$1\" variable=\"$2\">",
+      "\t$3",
+      "</wr-for>"
+    ],
+    "description": "WebRelease for loop",
+    "scope": "text.html"
+  },
+  "wr-fort": {
+    "prefix": "wr-fort",
+    "body": [
+      "<wr-for times=\"$1\" count=\"$2\">",
+      "\t$3",
+      "</wr-for>"
+    ],
+    "description": "WebRelease for loop (times)",
+    "scope": "text.html"
+  },
+  "wr-break": {
+    "prefix": "wr-break",
+    "body": ["<wr-break />"],
+    "description": "WebRelease break",
+    "scope": "text.html"
+  },
+  "wr-breakc": {
+    "prefix": "wr-breakc",
+    "body": ["<wr-break condition=\"$1\" />"],
+    "description": "WebRelease conditional break",
+    "scope": "text.html"
+  },
+  "wr-var": {
+    "prefix": "wr-var",
+    "body": ["<wr-variable name=\"$1\" value=\"$2\" />"],
+    "description": "WebRelease variable",
+    "scope": "text.html"
+  },
+  "wr-varb": {
+    "prefix": "wr-varb",
+    "body": [
+      "<wr-variable name=\"$1\">",
+      "\t$2",
+      "</wr-variable>"
+    ],
+    "description": "WebRelease variable block",
+    "scope": "text.html"
+  },
+  "wr-append": {
+    "prefix": "wr-append",
+    "body": ["<wr-append name=\"$1\" value=\"$2\" />"],
+    "description": "WebRelease append",
+    "scope": "text.html"
+  },
+  "wr-appendb": {
+    "prefix": "wr-appendb",
+    "body": [
+      "<wr-append name=\"$1\">",
+      "\t$2",
+      "</wr-append>"
+    ],
+    "description": "WebRelease append block",
+    "scope": "text.html"
+  },
+  "wr-clear": {
+    "prefix": "wr-clear",
+    "body": ["<wr-clear name=\"$1\" />"],
+    "description": "WebRelease clear",
+    "scope": "text.html"
+  },
+  "wr-return": {
+    "prefix": "wr-return",
+    "body": ["<wr-return value=\"$1\" />"],
+    "description": "WebRelease return",
+    "scope": "text.html"
+  },
+  "wr-returnb": {
+    "prefix": "wr-returnb",
+    "body": [
+      "<wr-return>",
+      "\t$1",
+      "</wr-return>"
+    ],
+    "description": "WebRelease return block",
+    "scope": "text.html"
+  },
+  "wr-error": {
+    "prefix": "wr-error",
+    "body": [
+      "<wr-error>",
+      "\t$1",
+      "</wr-error>"
+    ],
+    "description": "WebRelease error",
+    "scope": "text.html"
+  },
+  "wr-errorc": {
+    "prefix": "wr-errorc",
+    "body": [
+      "<wr-error condition=\"$1\">",
+      "\t$2",
+      "</wr-error>"
+    ],
+    "description": "WebRelease conditional error",
+    "scope": "text.html"
+  },
+  "wr-comment": {
+    "prefix": "wr-comment",
+    "body": [
+      "<wr-comment>",
+      "\t$1",
+      "</wr-comment>"
+    ],
+    "description": "WebRelease comment",
+    "scope": "text.html"
+  }
+}
