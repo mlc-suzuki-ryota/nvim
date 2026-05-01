@@ -3,6 +3,7 @@ return {
   dependencies = {
     "onsails/lspkind.nvim",
     "L3MON4D3/LuaSnip",
+    "fang2hou/blink-copilot"
   },
   version = "1.*",
   ---@module 'blink.cmp'
@@ -17,14 +18,29 @@ return {
     appearance = {
       nerd_font_variant = "mono",
     },
-    completion = { 
+    completion = {
       documentation = { auto_show = true },
       accept = {
         auto_brackets = { enabled = true }
       }
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          transform_items = function(_, items)
+            local completion_item_kind = require("blink.cmp.types").CompletionItemKind
+            for _, item in ipairs(items) do
+              item.kind = completion_item_kind.Copilot
+            end
+            return items
+          end,
+        },
+      },
     },
     snippets = {
       preset = "luasnip",
@@ -34,4 +50,3 @@ return {
     },
   },
 }
-

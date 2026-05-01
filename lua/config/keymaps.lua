@@ -38,12 +38,13 @@ keymap.set("n", "<tab>", "<Cmd>bnext<CR>", { silent = true })
 -- エラーメッセージ
 keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { silent = true });
 
--- format
-vim.keymap.set('n', '<localleader>ff', function()
-  vim.lsp.buf.format {
-    timeout_ms = 200,
-    async = true,
-  }
+-- format（LSP）。PHP は intelephense を明示（他 LSP と重なったときの誤選択防止）
+vim.keymap.set('n', '<Leader>fo', function()
+  local o = { async = true }
+  if vim.bo.filetype == 'php' then
+    o.name = 'intelephense'
+  end
+  vim.lsp.buf.format(o)
 end)
 
 keymap.set("n", "<Leader><Leader>", "<Cmd>Yazi<CR>", { silent = true })

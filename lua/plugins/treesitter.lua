@@ -26,7 +26,7 @@ return {
     }
 
     require 'nvim-treesitter.configs'.setup {
-      ensure_installed = { "lua", "vim", "query", "markdown", php, html, css, tsx, json },
+      ensure_installed = { "lua", "vim", "query", "markdown", "php", "html", "css", "tsx", "json" },
       highlight = {
         enable = true,
         disable = {},

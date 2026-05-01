@@ -2,7 +2,8 @@ require 'mason'.setup()
 
 local ensure_installed = {
   'lua_ls',
-  'vtsls'
+  'vtsls',
+  'intelephense'
 }
 require 'mason-lspconfig'.setup {
   automatic_installation = true,
@@ -31,9 +32,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- 補完を有効化
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
-    -- フォーマット
-    if not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
+    -- フォーマット（intelephense 等）
+    -- willSaveWaitUntil 対応のみを条件にしないこと。intelephense は willSave を出すため
+    -- その条件では BufWritePre が登録されず、保存時に一度も format が呼ばれないことがある。
+    if client:supports_method('textDocument/formatting', args.buf) then
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = args.buf,
