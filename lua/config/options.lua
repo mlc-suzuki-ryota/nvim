@@ -58,7 +58,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     local groups = {
       "Normal", "NormalFloat", "NormalNC", "SignColumn",
-      "MsgArea", "EndOfBuffer", "WinBar", "WinBarNC"
+      "MsgArea", "EndOfBuffer", "WinBar", "WinBarNC",
+      "FloatBorder", "SagaNormal", "SagaBorder",
     }
     for _, group in ipairs(groups) do
       vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })

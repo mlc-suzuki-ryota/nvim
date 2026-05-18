@@ -39,6 +39,16 @@ later(function() require('mini.comment').setup() end)
 later(function() require('mini.surround').setup() end)
 later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.pairs').setup() end)
+later(function() require('mini.animate').setup() end)
+later(function()
+  local hipatterns = require('mini.hipatterns')
+  hipatterns.setup({
+    highlighters = {
+      -- Hex color codes: #ffffff
+      hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+  })
+end)
 later(function()
   local map = require('mini.map')
   map.setup({
