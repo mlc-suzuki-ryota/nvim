@@ -51,3 +51,17 @@ vim.opt.scrolloff = 4
 vim.opt.clipboard = 'unnamedplus'
 -- vim.api.nvim_win_set_option(0, 'winblend', 80)
 -- vim.api.nvim_win_set_option(0, 'pumblend', 80)
+
+-- 背景透過設定
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    local groups = {
+      "Normal", "NormalFloat", "NormalNC", "SignColumn",
+      "MsgArea", "EndOfBuffer", "WinBar", "WinBarNC"
+    }
+    for _, group in ipairs(groups) do
+      vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
+    end
+  end,
+})

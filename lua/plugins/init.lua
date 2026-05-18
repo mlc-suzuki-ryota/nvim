@@ -1,0 +1,6 @@
+require('plugins.mini')
+require('plugins.lsp')
+require('plugins.treesitter')
+require('plugins.outline')
+require('plugins.ui')
+require('plugins.editor')
