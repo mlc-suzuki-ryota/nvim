@@ -44,6 +44,7 @@ vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
 vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
 -- Display options
+vim.opt.fillchars:append({ eob = " " })
 vim.opt.signcolumn = 'yes:1'
 vim.opt.number = true
 vim.opt.termguicolors = true
@@ -60,6 +61,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       "Normal", "NormalFloat", "NormalNC", "SignColumn",
       "MsgArea", "EndOfBuffer", "WinBar", "WinBarNC",
       "FloatBorder", "SagaNormal", "SagaBorder",
+      "LineNr", "CursorLineNr",
     }
     for _, group in ipairs(groups) do
       vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })

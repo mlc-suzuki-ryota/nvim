@@ -12,14 +12,16 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "tn", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+
 -- Split window
-keymap.set("n", "<Leader>ss", ":split<Return>", opts)
-keymap.set("n", "<Leader>sv", ":vsplit<Return>", opts)
+keymap.set("n", "<Leader>ss", ":split<Return>", { noremap = true, silent = true, desc = "Split window horizontally" })
+keymap.set("n", "<Leader>sv", ":vsplit<Return>", { noremap = true, silent = true, desc = "Split window vertically" })
+
 -- Move window
-keymap.set("n", "<Leader>sh", "<C-w>h")
-keymap.set("n", "<Leader>sk", "<C-w>k")
-keymap.set("n", "<Leader>sj", "<C-w>j")
-keymap.set("n", "<Leader>sl", "<C-w>l")
+keymap.set("n", "<Leader>sh", "<C-w>h", { desc = "Move to left window" })
+keymap.set("n", "<Leader>sk", "<C-w>k", { desc = "Move to upper window" })
+keymap.set("n", "<Leader>sj", "<C-w>j", { desc = "Move to lower window" })
+keymap.set("n", "<Leader>sl", "<C-w>l", { desc = "Move to right window" })
 
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
@@ -34,4 +36,4 @@ keymap.set("n", "all", "gg<S-v>G")
 keymap.set("n", "<tab>", "<Cmd>bnext<CR>", { silent = true })
 
 -- エラーメッセージ
-keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { silent = true });
+keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { silent = true, desc = "Show line diagnostics" });

@@ -10,9 +10,39 @@ end)
 now(function() require('mini.starter').setup() end)
 now(function() require('mini.notify').setup() end)
 now(function() require('mini.icons').setup() end)
-now(function() require('mini.tabline').setup() end)
+now(function()
+  require('mini.tabline').setup({ show_icons = true })
+  -- アクティブなタブの視認性を向上させるためのハイライト設定
+  local function set_tabline_hl()
+    vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { fg = '#ffffff', bg = '#444466', bold = true, force = true })
+    vim.api.nvim_set_hl(0, 'MiniTablineVisible', { fg = '#bbbbbb', bg = '#333344', force = true })
+    vim.api.nvim_set_hl(0, 'MiniTablineHidden', { fg = '#888888', bg = '#222233', force = true })
+    vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = 'none', force = true })
+  end
+
+
+  set_tabline_hl()
+
+  -- ステータスラインの視認性を向上させるためのハイライト設定
+  local function set_statusline_hl()
+    vim.api.nvim_set_hl(0, 'MiniStatuslineDevinfo', { fg = '#ffffff', bg = '#333355', bold = true, force = true })  -- Git情報など
+    vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { fg = '#eeeeee', bg = '#222244', force = true })              -- ファイルパス
+    vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { fg = '#ffffff', bg = '#333355', bold = true, force = true }) -- 言語・エンコーディング
+  end
+
+  set_statusline_hl()
+
+  -- カラースキーム変更時にも再適用されるように設定
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    callback = function()
+      set_tabline_hl()
+      set_statusline_hl()
+    end,
+  })
+end)
 now(function() require('mini.statusline').setup() end)
 now(function() require('mini.diff').setup() end)
+now(function() require('mini.git').setup() end)
 now(function() require('mini.cursorword').setup() end)
 now(function()
   require('mini.files').setup()
@@ -36,7 +66,19 @@ end)
 
 later(function() require('mini.ai').setup() end)
 later(function() require('mini.comment').setup() end)
-later(function() require('mini.surround').setup() end)
+later(function()
+  require('mini.surround').setup({
+    mappings = {
+      add = '<Leader>sa',
+      delete = '<Leader>sd',
+      find = '<Leader>sf',
+      find_left = '<Leader>sF',
+      highlight = '<Leader>sH',
+      replace = '<Leader>sr',
+      update_n_lines = '<Leader>sn',
+    },
+  })
+end)
 later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.pairs').setup() end)
 later(function() require('mini.animate').setup() end)
@@ -103,15 +145,15 @@ later(function()
   miniclue.setup({
     triggers = {
       { mode = { 'n', 'x' }, keys = '<Leader>' },
-      { mode = 'n', keys = '[' },
-      { mode = 'n', keys = ']' },
-      { mode = 'i', keys = '<C-x>' },
+      { mode = 'n',          keys = '[' },
+      { mode = 'n',          keys = ']' },
+      { mode = 'i',          keys = '<C-x>' },
       { mode = { 'n', 'x' }, keys = 'g' },
       { mode = { 'n', 'x' }, keys = "'" },
       { mode = { 'n', 'x' }, keys = '`' },
       { mode = { 'n', 'x' }, keys = '"' },
       { mode = { 'i', 'c' }, keys = '<C-r>' },
-      { mode = 'n', keys = '<C-w>' },
+      { mode = 'n',          keys = '<C-w>' },
       { mode = { 'n', 'x' }, keys = 'z' },
     },
     clues = {
@@ -122,8 +164,15 @@ later(function()
       miniclue.gen_clues.registers(),
       miniclue.gen_clues.windows(),
       miniclue.gen_clues.z(),
-      { mode = 'n', keys = '<Leader>f', desc = '+Find' },
-      { mode = 'n', keys = '<Leader>s', desc = '+Split / Window' },
+      { mode = 'n', keys = '<Leader>f',  desc = '+Find' },
+      { mode = 'n', keys = '<Leader>s',  desc = '+Surround / Split' },
+      { mode = 'n', keys = '<Leader>sa', desc = 'Add surrounding' },
+      { mode = 'n', keys = '<Leader>sd', desc = 'Delete surrounding' },
+      { mode = 'n', keys = '<Leader>sr', desc = 'Replace surrounding' },
+      { mode = 'n', keys = '<Leader>sf', desc = 'Find surrounding' },
+      { mode = 'n', keys = '<Leader>sF', desc = 'Find surrounding (left)' },
+      { mode = 'n', keys = '<Leader>sn', desc = 'Update n lines' },
+      { mode = 'n', keys = '<Leader>sH', desc = 'Highlight surrounding' },
     },
     window = {
       delay = 400,
