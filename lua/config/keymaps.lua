@@ -37,3 +37,6 @@ keymap.set("n", "<tab>", "<Cmd>bnext<CR>", { silent = true })
 
 -- エラーメッセージ
 keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { silent = true, desc = "Show line diagnostics" });
+
+-- Lazygit
+keymap.set("n", "<Leader>gg", "<cmd>term lazygit<cr>i", { silent = true, desc = "Open Lazygit" })

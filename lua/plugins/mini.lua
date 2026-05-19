@@ -165,6 +165,7 @@ later(function()
       miniclue.gen_clues.windows(),
       miniclue.gen_clues.z(),
       { mode = 'n', keys = '<Leader>f',  desc = '+Find' },
+      { mode = 'n', keys = '<Leader>g',  desc = '+Git' },
       { mode = 'n', keys = '<Leader>s',  desc = '+Surround / Split' },
       { mode = 'n', keys = '<Leader>sa', desc = 'Add surrounding' },
       { mode = 'n', keys = '<Leader>sd', desc = 'Delete surrounding' },
