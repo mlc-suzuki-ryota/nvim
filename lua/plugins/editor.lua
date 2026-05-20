@@ -42,3 +42,14 @@ later(function()
     })
   end, { desc = "Format file or range (in visual mode)" })
 end)
+
+later(function()
+  add({
+    source = 'MeanderingProgrammer/render-markdown.nvim',
+    depends = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+  })
+
+  require('render-markdown').setup({
+    file_types = { 'markdown' },
+  })
+end)

@@ -19,7 +19,7 @@ later(function()
   })
 
   require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'lua', 'vimdoc' },
+    ensure_installed = { 'lua', 'vimdoc', 'markdown', 'markdown_inline' },
     highlight = { enable = true },
     pairs = {
       enable = true,
